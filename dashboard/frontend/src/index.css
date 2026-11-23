@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 244 245 250; --panel: 255 255 255; --raised: 238 240 247; --line: 218 222 236; --ink: 22 28 52; --mute: 105 113 146;
+}
+.dark {
+  --bg: 10 14 28; --panel: 17 24 48; --raised: 24 33 64; --line: 36 48 88; --ink: 230 234 247; --mute: 135 146 184;
+}
+html, body, #root { height: 100%; }
+body { @apply bg-bg text-ink font-sans antialiased; font-feature-settings: 'tnum' 1, 'cv11' 1; }
+.num { @apply font-mono; font-variant-numeric: tabular-nums; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
+::-webkit-scrollbar-thumb { background: rgb(var(--line)); border-radius: 8px; }
+:focus-visible { outline: 2px solid #6aa6ff; outline-offset: 2px; }
+input, select, textarea { @apply bg-raised border border-line rounded-md px-2.5 py-1.5 text-sm text-ink outline-none focus:border-net; }
+table { @apply w-full text-sm; }
+th { @apply text-left font-semibold text-mute text-xs px-3 py-2 whitespace-nowrap; }
+td { @apply px-3 py-1.5 border-t border-line/70 whitespace-nowrap; }
+.recharts-text, .recharts-cartesian-axis-tick-value { fill: rgb(var(--mute)); font-size: 11px; }
+.recharts-tooltip-wrapper .recharts-default-tooltip { background: rgb(var(--panel)) !important; border: 1px solid rgb(var(--line)) !important; border-radius: 8px; }
+@keyframes flow { to { stroke-dashoffset: -24; } }
+.flow-line { stroke-dasharray: 6 6; animation: flow 1s linear infinite; }
+@keyframes pulse-dot { 0%,100% { opacity: 1 } 50% { opacity: .35 } }
+.live-dot { animation: pulse-dot 1.6s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .flow-line, .live-dot { animation: none; } }
